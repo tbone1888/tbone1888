@@ -2959,3 +2959,224 @@ Following the training of the autoencoder defender, the following command can be
 
 A prototype of SODA can be found in the `prototype` folder. This prototype was deployed on a Raspberry Pi.
 
+
+Imaginarium App Store
+
+Overview
+Imaginarium App Store is a decentralized application (dApp) built on the Ethereum blockchain. It allows developers to publish and manage their own apps, and users to discover and download new apps.
+
+Features
+- Decentralized app store built on Ethereum blockchain
+- Allows developers to publish and manage their own apps
+- Users can discover and download new apps
+- Apps are stored on IPFS for decentralized storage
+- User-friendly interface for easy app discovery and management
+
+Technical Details
+- Built using Solidity for smart contract development
+- Utilizes Web3.js for front-end interaction with the blockchain
+- IPFS used for decentralized app storage
+- Ethereum blockchain for decentralized app management
+
+Requirements
+- Node.js installed on your machine
+- Truffle Suite installed for smart contract development
+- Web3.js installed for front-end interaction with the blockchain
+- IPFS installed for decentralized app storage
+
+Installation
+1. Clone the repository: `git clone (link unavailable)
+2. Install dependencies: `npm install`
+3. Compile smart contracts: `truffle compile`
+4. Deploy smart contracts: `truffle migrate`
+5. Start the front-end: `npm start`
+
+Usage
+1. Open the app store in your web browser: `http://localhost:3000`
+2. Explore the app store and discover new apps
+3. Developers can publish their own apps using the "Publish App" button
+
+Contributing
+Contributions are welcome! Please submit a pull request with your changes.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgments
+- Thanks to the Truffle Suite team for their amazing development tools
+- Thanks to the Web3.js team for their easy-to-use library
+- Thanks to the IPFS team for their decentralized storage solution
+Imaginarium App Store
+*Solidity Contract*
+```
+solidity
+pragma solidity ^0.8.0;
+
+contract Imaginarium {
+    // Store app information
+    struct App {
+        string name;
+        string description;
+        string version;
+        string iconUrl; // URL to the app's icon (could be IPFS or centralized)
+        address developer; // https://www.facebook.com/greatoneforreal8?mibextid=ZbWKwL
+    }
+
+    // Mapping to store apps by their ID
+    mapping(uint256 => App) public apps;
+    uint256 public appCount;
+
+    // Event emitted when a new app is added
+    event AppAdded(uint256 appId, string name, address developer);
+
+    // Add a new app to the dApp store
+    function addApp(
+        string memory _name,
+        string memory _description,
+        string memory _version,
+        string memory _iconUrl
+    ) public {
+        appCount++;
+        apps[appCount] = App({
+            name: _name,
+            description: _description,
+            version: _version,
+            iconUrl: _iconUrl,
+            developer: msg.sender
+        });
+        emit AppAdded(appCount, _name, msg.sender);
+    }
+
+    // ... (Add more functions for app management, updates, etc.)
+}
+```
+
+*Frontend Code*
+*HTML*
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginarium App Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Apps</a></li>
+                <li><a href="#">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="featured-apps">
+            <h2>Featured Apps</h2>
+            <div class="app-grid">
+                <!-- App grid items will be generated dynamically -->
+            </div>
+        </section>
+        <section class="app-list">
+            <h2>All Apps</h2>
+            <ul>
+                <!-- App list items will be generated dynamically -->
+            </ul>
+        </section>
+    </main>
+    <script src="(link unavailable)"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+*CSS (in styles.css file)*
+```
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.featured-apps {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.app-list {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.app-list li {
+    margin-bottom: 10px;
+}
+
+.app-list li:last-child {Liltom
+    margin-bottom: 0;
+}
+```
+
+*JavaScript (in script.js file)*
+```
+// Import Web3 library
+const Web3 = require('web3');
+
+// Set up Web3 provider
+const provider = new Web3.providers.HttpProvider('(link unavailable)');
+const web3 = new Web3(provider);
+
+// Set up Imaginarium contract instance
+const contractAddress = '0x...'; // 0x9183E3309361625bf64dafe25bD2948399E65dAB
+const contractAbi = [...]; // 0.95 contract ABI
+const contract = new web
+```
